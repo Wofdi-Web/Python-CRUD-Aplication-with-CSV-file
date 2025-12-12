@@ -26,7 +26,12 @@ def read_data() -> None:
 
 def create_data() -> None:
     print("Membuat....")
-    NPM = dataValidation.input_valid("Masukkan NPM: ")
+    while True:
+        NPM = dataValidation.input_valid("Masukkan NPM: ")
+        if dataValidation.npm_exist(NPM):
+            print("NPM Sudah Terdaftar.")
+        else:
+            break
     nama = dataValidation.input_valid("Masukkan Nama: ")
     fakultas = dataValidation.input_valid("Masukkan Fakultas: ")
     prodi = dataValidation.input_valid("Masukkan Prodi: ")
