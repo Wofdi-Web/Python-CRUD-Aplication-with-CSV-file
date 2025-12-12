@@ -57,7 +57,7 @@ def delete_data() -> None:
     print()
 
     # Meminta input NPM yang ingin di hapus
-    target = dataValidation.input_valid("Masukkan Nomor NPM Mahasiswa Yang Ingin DI Hapus: ")
+    target = dataValidation.input_valid("Masukkan NPM Mahasiswa Yang Ingin DI Hapus: ")
 
     # data_sementara untuk menyimpan semua data yang tidak di hapus
     # deleted untuk menentukan ada atau tidaknya data yang akan dihapus
@@ -88,3 +88,35 @@ def delete_data() -> None:
     else:
         print("\nData tidak ditemukan.")
 
+def update_data() -> None:
+    read_data()
+    print()
+
+    target = input("Masukkan NPM Mahasiswa yang ingin di ubah: ")
+
+    data_sementara = []
+    updated = False
+
+    with open(nama_file, "r") as file:
+        reader = csv.reader(file)
+        for baris in reader:
+            if baris[0] == target:
+                print("Data Ditemukan")
+                proceed = input("Yakin ingin mengubah Data? (Y/n)")
+                if proceed.upper() == "Y":
+                    nama_baru = input("Masukkan Nama (Kosongkan Jika Tidak Ingin Di Ubah): ") or baris[1]
+                    jurusan_baru = input("Masukkan Jurusan (Kosongkan Jika Tidak Ingin Di Ubah): ") or baris[3]
+                    data_sementara.append([baris[0], nama_baru, baris[2], jurusan_baru])
+                    updated = True
+            else:
+                data_sementara.append(baris)
+    
+    if updated:
+        with open(nama_file, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(data_sementara)
+        print("\nData berhasil diubah")
+    else:
+        print("\nData tidak ditemukan")
+
+            

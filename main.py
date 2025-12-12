@@ -42,6 +42,7 @@ if __name__ == "__main__":
                 CRUD.create_data()
             case "3":
                 print("Update Data...")
+                CRUD.update_data()
             case "4":
                 print("Delete Data...")
                 CRUD.delete_data()
