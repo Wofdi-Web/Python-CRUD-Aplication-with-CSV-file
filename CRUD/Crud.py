@@ -5,17 +5,22 @@ import csv
 nama_file = Database.nama_file
 
 def read_data() -> None: 
+    # Inisiasi Tabel
     tabel = PrettyTable()
 
+    # Open File Database
     with open(nama_file, "r") as file:
         reader = csv.reader(file)
         try:
+            # Membuat Header Tabel
             header = next(reader)
             tabel.field_names = header
 
+            # Memasukkan data ke dalam baris tabel
             for row in reader:
                 tabel.add_row(row)
 
+        # Jika Data Kosong
         except StopIteration:
             print("Csv Kosong...")
             return None
@@ -25,19 +30,23 @@ def read_data() -> None:
         print(tabel)
 
 def create_data() -> None:
-    print("Membuat....")
+    # Minta Input User
     while True:
         NPM = dataValidation.input_valid("Masukkan NPM: ")
+        # Validasi Data NPM
+        # Jika NPM sudah ada minta user menginput ulang
         if dataValidation.npm_exist(NPM):
             print("NPM Sudah Terdaftar.")
         else:
             break
-    nama = dataValidation.input_valid("Masukkan Nama: ")
-    fakultas = dataValidation.input_valid("Masukkan Fakultas: ")
-    prodi = dataValidation.input_valid("Masukkan Prodi: ")
+    nama =      dataValidation.input_valid("Masukkan Nama       : ")
+    fakultas =  dataValidation.input_valid("Masukkan Fakultas   : ")
+    prodi =     dataValidation.input_valid("Masukkan Prodi      : ")
 
+    # Membuat Data Baru
     data_baru = [NPM, nama, fakultas, prodi]
 
+    # Memasukkan Data baru ke File Database
     with open(nama_file, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(data_baru)
