@@ -1,14 +1,26 @@
 import csv
-import prettytable as pt
 import os
+import CRUD as CRUD
+import prettytable as pt
 
 if __name__ == "__main__":
     sistem_operasi = os.name
+
+    match sistem_operasi:
+        case "nt": os.system("cls")
+        case "posix": os.system("clear")
+
+    print("CRUD APLICATION")
+    print("made by: Ziyad Aditya.")
+    print("----------------------")
+
+    CRUD.init_data()
 
     while True:
         match sistem_operasi:
             case "nt": os.system("cls")
             case "posix": os.system("clear")
+
         print("CRUD APLICATION")
         print("made by: Ziyad Aditya.")
         print("----------------------")
