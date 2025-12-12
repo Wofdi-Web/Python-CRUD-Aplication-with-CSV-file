@@ -20,7 +20,7 @@ if __name__ == "__main__":
         print("4. Delete Data\n")
 
         pilihan = input("Pilihan Mu... ")
-        print()
+        print("----------------------\n")
 
         match pilihan:
             case "1":
@@ -34,6 +34,8 @@ if __name__ == "__main__":
             case _ :
                 print("Invalid Choice...")
         
+        print("\n----------------------")
         is_selesai = input("Selesai (Y/n)? ... ") 
         if is_selesai.upper() == "Y":
+            print("Exiting ......")
             break
