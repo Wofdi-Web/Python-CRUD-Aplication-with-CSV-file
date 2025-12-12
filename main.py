@@ -39,6 +39,7 @@ if __name__ == "__main__":
                 CRUD.read_data()
             case "2":
                 print("Create Data...")
+                CRUD.create_data()
             case "3":
                 print("Update Data...")
             case "4":

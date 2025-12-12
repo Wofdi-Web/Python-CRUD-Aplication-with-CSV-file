@@ -1,6 +1,6 @@
 from prettytable import PrettyTable
+from CRUD import Database, inputValidation
 import csv
-from CRUD import Database
 
 nama_file = Database.nama_file
 
@@ -24,5 +24,18 @@ def read_data() -> None:
         tabel.align = "c"
         print(tabel)
 
+def create_data() -> None:
+    print("Membuat....")
+    NPM = inputValidation.input_valid("Masukkan NPM: ")
+    nama = inputValidation.input_valid("Masukkan Nama: ")
+    fakultas = inputValidation.input_valid("Masukkan Fakultas: ")
+    prodi = inputValidation.input_valid("Masukkan Prodi: ")
+
+    data_baru = [NPM, nama, fakultas, prodi]
+
+    with open(nama_file, "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(data_baru)
+
 if __name__ == "__main__":
-    read_data()
+    create_data()
