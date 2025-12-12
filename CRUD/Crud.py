@@ -1,5 +1,5 @@
 from prettytable import PrettyTable
-from CRUD import Database, inputValidation
+from CRUD import Database, dataValidation
 import csv
 
 nama_file = Database.nama_file
@@ -26,10 +26,10 @@ def read_data() -> None:
 
 def create_data() -> None:
     print("Membuat....")
-    NPM = inputValidation.input_valid("Masukkan NPM: ")
-    nama = inputValidation.input_valid("Masukkan Nama: ")
-    fakultas = inputValidation.input_valid("Masukkan Fakultas: ")
-    prodi = inputValidation.input_valid("Masukkan Prodi: ")
+    NPM = dataValidation.input_valid("Masukkan NPM: ")
+    nama = dataValidation.input_valid("Masukkan Nama: ")
+    fakultas = dataValidation.input_valid("Masukkan Fakultas: ")
+    prodi = dataValidation.input_valid("Masukkan Prodi: ")
 
     data_baru = [NPM, nama, fakultas, prodi]
 

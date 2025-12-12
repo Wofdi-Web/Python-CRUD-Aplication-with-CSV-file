@@ -1,4 +1,3 @@
-
 def input_valid(label) -> str:
     while True:
         masukan =  input(label)
