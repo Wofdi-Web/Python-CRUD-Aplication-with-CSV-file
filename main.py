@@ -3,6 +3,7 @@ import os
 import CRUD as CRUD
 
 if __name__ == "__main__":
+    CRUD.init_data()
     sistem_operasi = os.name
 
     match sistem_operasi:
@@ -13,7 +14,6 @@ if __name__ == "__main__":
     print("made by: Ziyad Aditya.")
     print("----------------------")
 
-    CRUD.init_data()
 
     while True:
         match sistem_operasi:
@@ -36,6 +36,7 @@ if __name__ == "__main__":
         match pilihan:
             case "1":
                 print("Read Data...")
+                CRUD.read_data()
             case "2":
                 print("Create Data...")
             case "3":
