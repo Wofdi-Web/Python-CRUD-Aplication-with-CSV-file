@@ -39,17 +39,43 @@ def create_data() -> None:
             print("NPM Sudah Terdaftar.")
         else:
             break
-    nama =      dataValidation.input_valid("Masukkan Nama       : ")
-    fakultas =  dataValidation.input_valid("Masukkan Fakultas   : ")
-    prodi =     dataValidation.input_valid("Masukkan Prodi      : ")
+    nama = dataValidation.input_valid("Masukkan Nama: ")
+    fakultas = dataValidation.input_valid("Masukkan Fakultas: ")
+    prodi = dataValidation.input_valid("Masukkan Prodi: ")
 
     # Membuat Data Baru
     data_baru = [NPM, nama, fakultas, prodi]
 
-    # Memasukkan Data baru ke File Database
+    # Memasukkan Data baru ke File
     with open(nama_file, "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(data_baru)
 
-if __name__ == "__main__":
-    create_data()
+def delete_data() -> None:
+    read_data()
+    print()
+
+    target = dataValidation.input_valid("Masukkan Nomor NPM Mahasiswa Yang Ingin DI Hapus: ")
+
+    data_sementara = []
+    deleted = False
+
+    with open(nama_file, "r") as file:
+        reader = csv.reader(file)
+        for baris in reader:
+            if baris[0] == target:
+                print(f"Menghapus Data : {baris[1]} - {baris[0]}")
+                proceed = input("Yakin Ingin Menghapus Data? (Y/n) ")
+                if proceed.upper() == "Y":
+                    deleted = True
+            else:
+                data_sementara.append(baris)
+    
+    if deleted:
+        with open(nama_file, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(data_sementara)
+        print("\nData Berhasil Di Hapus.")
+    else:
+        print("\nData tidak ditemukan.")
+

@@ -9,7 +9,7 @@ def input_valid(label) -> str:
         if masukan.strip() != "":
             return masukan
         
-        print("Error, Input Tidak Sesuai. Masukan Ulang...")
+        print("Error, Input Tidak Sesuai. Masukan Ulang...\n")
 
 def npm_exist(NPM) -> bool:
     with open(nama_file, "r") as file:

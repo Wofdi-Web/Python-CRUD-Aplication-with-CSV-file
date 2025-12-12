@@ -44,6 +44,7 @@ if __name__ == "__main__":
                 print("Update Data...")
             case "4":
                 print("Delete Data...")
+                CRUD.delete_data()
             case _ :
                 print("Invalid Choice...")
         
