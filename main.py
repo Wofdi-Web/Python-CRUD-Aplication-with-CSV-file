@@ -1,7 +1,6 @@
 import csv
 import os
 import CRUD as CRUD
-import prettytable as pt
 
 if __name__ == "__main__":
     sistem_operasi = os.name
