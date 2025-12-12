@@ -52,25 +52,34 @@ def create_data() -> None:
         writer.writerow(data_baru)
 
 def delete_data() -> None:
+    # Menampilkan Data Yang sudah ada
     read_data()
     print()
 
+    # Meminta input NPM yang ingin di hapus
     target = dataValidation.input_valid("Masukkan Nomor NPM Mahasiswa Yang Ingin DI Hapus: ")
 
+    # data_sementara untuk menyimpan semua data yang tidak di hapus
+    # deleted untuk menentukan ada atau tidaknya data yang akan dihapus
     data_sementara = []
     deleted = False
 
     with open(nama_file, "r") as file:
         reader = csv.reader(file)
         for baris in reader:
+            # Mengecek setiap NPM yang ada
             if baris[0] == target:
                 print(f"Menghapus Data : {baris[1]} - {baris[0]}")
+                # two step verification
                 proceed = input("Yakin Ingin Menghapus Data? (Y/n) ")
                 if proceed.upper() == "Y":
                     deleted = True
             else:
+                # Jika data NPM tidak sesuai dengan yang ingin di hapus,
+                # Data akan di append ke data_sementara
                 data_sementara.append(baris)
     
+    # Menghapus data
     if deleted:
         with open(nama_file, "w", newline="") as file:
             writer = csv.writer(file)
