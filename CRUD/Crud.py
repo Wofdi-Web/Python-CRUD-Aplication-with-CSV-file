@@ -118,5 +118,4 @@ def update_data() -> None:
         print("\nData berhasil diubah")
     else:
         print("\nData tidak ditemukan")
-
-            
+      
